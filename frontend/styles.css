@@ -1,0 +1,128 @@
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(to bottom, #EDE7F6, #F3E8FF);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    text-align: center;
+  }
+  
+  h2 {
+    color: #5E35B1;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    letter-spacing: 1px;
+  }
+  
+  h1 {
+    color: #311B92;
+    font-size: 2.5rem;
+    font-weight: 500;
+    max-width: 500px;
+    margin-bottom: 2rem;
+    line-height: 1.3;
+  }
+  
+  h1 span {
+    font-weight: 700;
+    color: #311B92;
+  }
+/* START button */
+.start-btn {
+  background: #311B92;
+  color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.start-btn:hover {
+  background: #4527A0;
+  transform: scale(1.05);
+}
+
+.start-btn:active {
+  background: #271178;
+}
+  
+  /* Menu page background */
+.second-page {
+  background: #7E57C2;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Button container */
+.menu-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* Shared button styles */
+.btn {
+  padding: 1.25rem 3rem;
+  font-weight: 700;
+  font-size: 1.2rem;
+  border-radius: 1rem;
+  cursor: pointer;
+  border: none;
+  transition: all 0.3s ease;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Practice button */
+.practice-btn {
+  background: #311B92;
+  color: #fff;
+}
+
+.practice-btn:hover {
+  transform: scale(1.05);
+}
+
+.practice-btn:active {
+  background: #1f1173;
+}
+
+/* Test button */
+.test-btn {
+  background: #EDE7F6;
+  color: #311B92;
+}
+
+.test-btn:hover {
+  transform: scale(1.05);
+}
+
+.test-btn:active {
+  background: #d5cbe8;
+  
+}
+
+
+/* Back button style */
+/* Position the back button at the top-left */
+.back-btn {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  background: transparent;
+  color: white;
+  border: none;
+  font-size: 1rem;
+  cursor: pointer;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+}
+
+.back-btn:hover {
+  text-decoration: underline;
+}
+
+
