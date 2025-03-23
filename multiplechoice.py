@@ -3,18 +3,14 @@ import pygame
 import sys
 import random
 import time
-import flask
+import multiprocessing
 
-
-app = flask.Flask(__name__)
-
-@app.route('/')
-def index():
+def worker():
     # Initialize Pygame
     pygame.init()
 
     # Set up the display
-    width, height = 800, 600
+    width, height = 1000, 700
     screen = pygame.display.set_mode((width, height))
 
     # Set up the images
@@ -95,8 +91,8 @@ def index():
 
 
 
-
-    while question_index < 26:
+    running = True
+    while question_index < 26 and running:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 running = False
@@ -147,5 +143,7 @@ def index():
 
     pygame.quit()
 
-if __name__ == "__main__":
-    app.run()
+
+
+if __name__ == '__main__':
+    worker()
