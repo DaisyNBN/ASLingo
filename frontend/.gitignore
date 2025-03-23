@@ -1,0 +1,7 @@
+node_modules/
+*.exe
+*.dll
+*.pak
+*.dat
+dist/
+out/

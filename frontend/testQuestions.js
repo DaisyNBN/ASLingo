@@ -1,24 +1,14 @@
-const answerButton = document.getElementById('answer-btn');
-const video = document.getElementById('video');
-const canvas = document.getElementById('canvas');
-const questionText = document.getElementById('question-text');
+const { exec } = require('child_process');
 
-// Hardcoded for now: current question target
-const expectedAnswer = "A";
+const answerButton = document.getElementById('answer-btn');
 
 answerButton.addEventListener('click', () => {
-  // Step 1: Open the camera
-  navigator.mediaDevices.getUserMedia({ video: { facingMode: "user" } })
-    .then(stream => {
-      video.style.display = 'block';
-      video.srcObject = stream;
-      answerButton.textContent = "Capture";
-      // Switch to capture mode on next click
-      answerButton.onclick = captureAndSend;
-    })
-    .catch(err => {
-      alert('Error accessing camera: ' + err);
-    });
+  // Launch Python backend (adjust path as needed)
+  exec('conda run -n asl-env python ../asl-classifier/app.py', (err, stdout, stderr) => {
+    if (err) {
+      console.error('Failed to launch Python app:', err);
+    } else {
+      console.log('Python app launched!');
+    }
+  });
 });
-
-
