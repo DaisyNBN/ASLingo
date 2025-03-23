@@ -6,4 +6,4 @@ pillow
 matplotlib
 python-multipart
 opencv-python
-
+pygame

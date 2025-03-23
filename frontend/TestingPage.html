@@ -1,28 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>SignApp - Test</title>
+    <link href="styles.css" rel="stylesheet" />
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>SignApp - Test</title>
-  <link href="styles.css" rel="stylesheet">
-</head>
+  <body class="quiz-page">
+    <!-- Back Button -->
+    <button class="back-btn" onclick="location.href='MenuPage.html'">
+      ← Back
+    </button>
 
-<body class="quiz-page">
-  <!-- Back Button -->
-  <button class="back-btn" onclick="location.href='MenuPage.html'">← Back</button>
+    <!-- Quiz Section -->
+    <div class="quiz-container">
+      <h1 id="question-text">Loading question...</h1>
+      <button class="btn answer-btn" id="answer-btn">Answer</button>
+    </div>
 
-  <!-- Quiz Section -->
-  <div class="quiz-container">
-    <h2 id="question-text">Question 1: What is “A”?</h2>
-    <button class="btn answer-btn" id="answer-btn">Answer</button>
-  </div>
+    <!-- Camera and Canvas -->
+    <div class="camera-container">
+      <video
+        id="video"
+        width="640"
+        height="480"
+        autoplay
+        style="display: none; margin-top: 20px"
+      ></video>
+      <canvas
+        id="canvas"
+        width="640"
+        height="480"
+        style="display: none"
+      ></canvas>
+    </div>
 
-  <!-- Camera Section (hidden initially) -->
-  <video id="video" width="640" height="480" autoplay style="display:none; margin-top: 20px;"></video>
-  <canvas id="canvas" width="640" height="480" style="display:none;"></canvas>
-
-  <script src="testQuestions.js"></script>
-</body>
-
+    <!-- Quiz logic -->
+    <script src="testQuestions.js"></script>
+  </body>
 </html>

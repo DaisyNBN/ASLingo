@@ -3,17 +3,22 @@ const answerButton = document.getElementById('answer-btn');
 const video = document.getElementById('video');
 const canvas = document.getElementById('canvas');
 
-// Set the expected answer here (could be dynamic later)
-const expectedAnswer = "A";
+console.log("✅ testQuestions.js loaded");
 
+// All 29 ASL characters
+const aslCharacters = [
+  'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J',
+  'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T',
+  'U', 'V', 'W', 'X', 'Y', 'Z', 'del', 'nothing', 'space'
+];
+
+let expectedAnswer = getRandomCharacter();
 let streamStarted = false;
 
-// Update question text
-questionText.textContent = `Question 1: What is “${expectedAnswer}”?`;
+updateQuestionText();
 
 answerButton.addEventListener('click', () => {
   if (!streamStarted) {
-    // Start webcam
     navigator.mediaDevices.getUserMedia({ video: { facingMode: "user" } })
       .then(stream => {
         video.srcObject = stream;
@@ -26,7 +31,6 @@ answerButton.addEventListener('click', () => {
         alert("Camera access failed: " + err);
       });
   } else {
-    // Capture frame and send to backend
     const context = canvas.getContext('2d');
     context.drawImage(video, 0, 0, canvas.width, canvas.height);
 
@@ -41,11 +45,14 @@ answerButton.addEventListener('click', () => {
         .then(res => res.json())
         .then(data => {
           const prediction = data.prediction;
-          if (prediction === expectedAnswer) {
-            alert(`✅ Correct! You signed '${prediction}'`);
-          } else {
-            alert(`❌ Incorrect. You signed '${prediction}', but the correct answer was '${expectedAnswer}'`);
-          }
+
+          // Show correct answer regardless of prediction
+          alert(`You signed '${prediction}'. The correct answer was '${expectedAnswer}'.`);
+
+          // Move to next random question
+          expectedAnswer = getRandomCharacter();
+          updateQuestionText();
+          answerButton.textContent = "Capture";
         })
         .catch(err => {
           console.error("API Error:", err);
@@ -54,3 +61,12 @@ answerButton.addEventListener('click', () => {
     }, "image/png");
   }
 });
+
+function getRandomCharacter() {
+  const randomIndex = Math.floor(Math.random() * aslCharacters.length);
+  return aslCharacters[randomIndex];
+}
+
+function updateQuestionText() {
+  questionText.textContent = `What is “${expectedAnswer}”?`;
+}
